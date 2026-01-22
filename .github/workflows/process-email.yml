@@ -29,7 +29,7 @@ jobs:
       - name: Process email
         env:
           EMAIL_SECRET_TOKEN: ${{ secrets.EMAIL_SECRET_TOKEN }}
-        run: |
+        run: |  
           echo "${{ github.event.client_payload.email }}" | npm run process-email
 
       - name: Commit new post

@@ -19,7 +19,7 @@ export default function Home() {
             No posts yet. Send an email to start blogging!
           </p>
           <p className="text-sm text-muted-foreground">
-            Format: <code className="bg-muted px-2 py-1 rounded">[TOKEN-your-token] Post Title</code>
+            Format: <code className="bg-muted px-2 py-1 rounded">[TOKEN-good-boy] Post Title</code>
           </p>
         </div>
       ) : (
