@@ -4,6 +4,9 @@ on:
   repository_dispatch:
     types: [email-received]
 
+permissions:
+  contents: write
+
 jobs:
   process-email:
     runs-on: ubuntu-latest
