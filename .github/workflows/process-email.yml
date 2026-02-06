@@ -29,8 +29,13 @@ jobs:
       - name: Process email
         env:
           EMAIL_SECRET_TOKEN: ${{ secrets.EMAIL_SECRET_TOKEN }}
-        run: |  
-          echo "${{ github.event.client_payload.email }}" | npm run process-email
+        run: |
+          # Write email to temp file to avoid shell escaping issues
+          cat > /tmp/email.eml << 'EMAIL_EOF'
+          ${{ github.event.client_payload.email }}
+          EMAIL_EOF
+          # Process the email from file
+          npm run process-email /tmp/email.eml
 
       - name: Commit new post
         run: |
