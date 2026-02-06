@@ -1,4 +1,4 @@
-name = "email-to-blog-worker"
+name = "penpal-email-worker"
 main = "email-worker.js"
 compatibility_date = "2024-01-01"
 
