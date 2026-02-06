@@ -1,5 +1,5 @@
 {
-  "name": "penpal",
+  "name": "email-to-blog-worker",
   "compatibility_date": "2026-01-22",
   "assets": {
     "directory": "./out"
