@@ -30,6 +30,8 @@ bike new york
 
 automattic hq
 
+[secret riso club](https://secretrisoclub.com/Membership)
+
   
 
 Labs / Parks
@@ -82,6 +84,8 @@ creative minds bk
 
 creative mornings nyc
 
+[edible affairs](https://edibleaffairs.cargo.site/)
+
   
 
 Biking
@@ -118,6 +122,7 @@ Vendor?
 
 [caffeine garden](https://www.instagram.com/caffeine.garden/?hl=en)
 
+[irrelelevant press](https://www.irrelevantpress.com/)
   
 
 \~~~~~~~~~~
