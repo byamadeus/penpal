@@ -5,25 +5,16 @@ export default function Home() {
   const posts = getAllPosts()
 
   return (
-    <div className="max-w-4xl mx-auto">
-      <div className="mb-8">
-        <h2 className="text-3xl font-bold mb-2">All Posts</h2>
-        <p className="text-muted-foreground">
-          {posts.length} {posts.length === 1 ? 'post' : 'posts'} published
-        </p>
-      </div>
-
+    <div className="max-w-5xl mx-auto">
       {posts.length === 0 ? (
-        <div className="text-center py-16">
-          <p className="text-muted-foreground text-lg mb-4">
-            No posts yet. Send an email to start blogging!
-          </p>
-          <p className="text-sm text-muted-foreground">
-            Format: <code className="bg-muted px-2 py-1 rounded">[TOKEN-good-boy] Post Title</code>
+        <div className="border-2 border-black p-8 text-center font-mono">
+          <p className="font-bold uppercase text-sm mb-2">No posts yet.</p>
+          <p className="text-xs">
+            Send an email to penpal@byamadeus.com with [TOKEN-good-boy] in the subject.
           </p>
         </div>
       ) : (
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-8 grid-cols-2 md:grid-cols-3">
           {posts.map(post => (
             <PostCard key={post.slug} post={post} />
           ))}

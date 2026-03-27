@@ -1,7 +1,4 @@
 import Link from 'next/link'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Separator } from '@/components/ui/separator'
 import { getThreadMetadata, getPostBySlug } from '@/lib/post-manager'
 
 interface SeriesNavProps {
@@ -19,65 +16,35 @@ export function SeriesNav({ threadId, currentSlug }: SeriesNavProps) {
   const currentIndex = threadMeta.posts.findIndex(p => p.slug === currentSlug)
 
   return (
-    <Card className="mt-8">
-      <CardHeader>
-        <div className="flex items-center gap-2">
-          <CardTitle className="text-lg">Post Series</CardTitle>
-          <Badge variant="secondary">{threadMeta.posts.length} posts</Badge>
-        </div>
-        <CardDescription>
-          Part {currentIndex + 1} of {threadMeta.posts.length}
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="space-y-2">
-          {threadMeta.posts.map((post, index) => {
-            const postData = getPostBySlug(post.slug)
-            const isCurrent = post.slug === currentSlug
+    <div className="border-2 border-black mt-4">
+      <div className="border-b-2 border-black px-4 py-3 flex items-center justify-between">
+        <span className="text-xs font-bold uppercase font-mono">Post Series</span>
+        <span className="text-xs font-mono border border-black px-1">
+          {currentIndex + 1} / {threadMeta.posts.length}
+        </span>
+      </div>
+      <div>
+        {threadMeta.posts.map((post, index) => {
+          const postData = getPostBySlug(post.slug)
+          const isCurrent = post.slug === currentSlug
 
-            return (
-              <div key={post.slug}>
-                {index > 0 && <Separator className="my-2" />}
-                <Link
-                  href={`/post/${post.slug}`}
-                  className={`block p-3 rounded-lg transition-colors ${
-                    isCurrent
-                      ? 'bg-primary/10 border border-primary/20'
-                      : 'hover:bg-muted'
-                  }`}
-                >
-                  <div className="flex items-start gap-3">
-                    <span
-                      className={`text-sm font-semibold ${
-                        isCurrent ? 'text-primary' : 'text-muted-foreground'
-                      }`}
-                    >
-                      {index + 1}.
-                    </span>
-                    <div className="flex-1">
-                      <p
-                        className={`font-medium ${
-                          isCurrent ? 'text-primary' : 'text-foreground'
-                        }`}
-                      >
-                        {postData?.metadata.title || 'Untitled'}
-                      </p>
-                      <p className="text-xs text-muted-foreground mt-1">
-                        {postData?.metadata.date}
-                      </p>
-                    </div>
-                    {isCurrent && (
-                      <Badge variant="default" className="text-xs">
-                        Current
-                      </Badge>
-                    )}
-                  </div>
-                </Link>
-              </div>
-            )
-          })}
-        </div>
-      </CardContent>
-    </Card>
+          return (
+            <Link
+              key={post.slug}
+              href={`/post/${post.slug}`}
+              className={`flex items-center gap-3 px-4 py-3 text-xs font-mono border-b border-black last:border-b-0 transition-colors ${
+                isCurrent ? 'bg-black text-white' : 'hover:bg-black hover:text-white'
+              }`}
+            >
+              <span className="font-bold w-4">{index + 1}.</span>
+              <span className="flex-1 uppercase">
+                {postData?.metadata.title || 'Untitled'}
+              </span>
+              {isCurrent && <span className="text-xs">CURRENT</span>}
+            </Link>
+          )
+        })}
+      </div>
+    </div>
   )
 }

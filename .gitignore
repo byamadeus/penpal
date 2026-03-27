@@ -47,3 +47,5 @@ Thumbs.db
 # Test email files
 *.eml
 test-*.eml
+
+refs/
